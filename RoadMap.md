@@ -1,6 +1,4 @@
-# Project Flow
-
-## What the webapp does-
+# Outcome Visioning-
 Based on data from Twitter, we predict the results of the 2019 Lok Sabha Elections.
 
 ## Essential Features-
