@@ -7,10 +7,10 @@ Based on data from Twitter, we predict the results of the 2019 Lok Sabha Electio
 
 ### Dividing the features and information region wise-
 * Interactive Map of the naton, divided in states.
-* For each state; information such as the the number of seates, candidates of the political parties in that region and past trends,
-  voter turn-out (divided by caste, gender, age group etc.)
+* For each state: information such as the the number of seates, candidates of the political parties in that region and past results,
+  past trends such as voter turn-out (divided by caste, gender, age group etc.)
 
-## Add-Ons-
+## Add-Ons(Optional Features)-
 * displaying real time data from Twitter (group by relevant hashtags), provide ability to user to search for such data directly from 
   our portal, ability to gather user information ( sort of an informal survey we conduct on our site)
 
