@@ -1,0 +1,12 @@
+ID 1
+credentials['CONSUMER_KEY'] ='DyuA4CFf5NK8dShf1ou07t8AJ' 
+credentials['CONSUMER_SECRET'] ='VsdaIcS1Mj459kTVk2ztGgUY67iUS0ya4aGE6ImtwR8VKG81uY'  
+credentials['ACCESS_TOKEN'] ='2913426386-PcD4XMnNqd3lvrViGgvpd2Vvdg2kOnlivGRSVsQ'  
+credentials['ACCESS_SECRET'] ='OMy6KJNuwR6nY2BME7zFMr7QAMbwUhObrAeVtbTzpB4aX'
+30days label : recent
+full-archive label : elec2019
+
+ID 2
+2E553B93hCBNGCnFNwmg0BWbY (API key)
+9YPyCLrbOiFV0IYolw3vioir0tKPPFqQEbgG2aQ30BisAsGXrY (API secret key)
+full-archive label : test2019
