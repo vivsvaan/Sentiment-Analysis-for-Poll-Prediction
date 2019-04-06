@@ -20,10 +20,6 @@ pos = ['pos', ' ']
 neg = ['neg', ' ']
 neut = ['neutral', ' ']
 
-for _ in range(10):
-    text.append("ab")
-
-
 
 with open('data.csv', 'w', newline='') as outfile:
     rowlists = zip(text, comp, pos, neg, neut)
