@@ -65,6 +65,7 @@ def search_for_tweets(hashtag=None, maxResults=None, fromdate=None, todate=None)
     :return: content of the tweets
     """
 
+    # replace electionTweets.json with your development envirnment name
     search_url = f'{base_url}1.1/tweets/search/fullarchive/electionTweets.json'
 
     access_token = get_bearer_token()
