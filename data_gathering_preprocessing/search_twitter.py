@@ -7,7 +7,6 @@ import base64
 # these are the access keys associated with my twitter app
 # TODO - find a way to make them not appear in the source code
 
-# add appropriate keys
 consumer_key = 'CQGMKF5imQ7J6Cyl85Bh9mILN'
 consumer_secret_key = 'eslhOxns82F4uNSzTwbFIiTTqixX2Ekimmbk3E4DMYsv2s8MoH'
 base_url = 'https://api.twitter.com/'
@@ -81,7 +80,7 @@ def premium_search_for_tweets(hashtag=None, maxResults=None, fromdate=None, toda
     radius = geocode['radius']
 
     search_params = {
-        'query': f'#{hashtag} AND -is:retweet AND -is:reply AND point_radius:[{longitude} {latitude} {radius}]',
+        'query': f'#{hashtag} -filter:retweets -filter:replies point_radius:[{longitude} {latitude} {radius}]',
         'maxResults': maxResults,
         'fromDate': fromdate,
         'toDate': todate
@@ -114,7 +113,7 @@ def standard_search_for_tweets(hashtag = None, result_type = None, count = None,
     radius = geocode['radius']
 
     search_params = {
-        'q': f'#{hashtag}',
+        'q': f'#{hashtag} -filter:retweets -filter:replies',
         'geocode': f'{latitude},{longitude},{radius}',
         'result_type': result_type,
         'count': count
