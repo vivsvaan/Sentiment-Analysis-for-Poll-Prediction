@@ -1,15 +1,14 @@
 """
 @author: Abhinav Khetarpal
 """
-
 import requests
 import base64
 
 # these are the access keys associated with my twitter app
 # TODO - find a way to make them not appear in the source code
 
-consumer_key = 'QOOW4lFGzOiLL6o6lfZZB2dlk'
-consumer_secret_key = 'peJUPrdR1Co4jKkm37xDVFkeyqVt41bvYcvfoVDrjmezS1VRcQ'
+consumer_key = 'CQGMKF5imQ7J6Cyl85Bh9mILN'
+consumer_secret_key = 'eslhOxns82F4uNSzTwbFIiTTqixX2Ekimmbk3E4DMYsv2s8MoH'
 base_url = 'https://api.twitter.com/'
 
 
@@ -58,25 +57,66 @@ def get_bearer_token():
     return access_token
 
 
-def search_for_tweets(hashtag=None, maxResults=None, fromdate=None, todate=None):
+def premium_search_for_tweets(hashtag=None, maxResults=None, fromdate=None, todate=None, geocode = None):
     """
-    searches for tweets matching the given criteria
-    :paramss: hastag, maxResults (10-100), fromdate, todate
-    :return: content of the tweets
+    searches for tweets matching the given criteria using premium search API endpoint
+    :paramss: hastag, maxResults (10-100), fromdate, todate, geocode
+    :return: tweet data
     """
 
-    # replace electionTweets.json with your development envirnment name
-    search_url = f'{base_url}1.1/tweets/search/fullarchive/electionTweets.json'
+    #Search url for full-archive
+    premium_search_url = f'{base_url}1.1/tweets/search/fullarchive/electionTweets.json'
 
+    # generating authorization header
     access_token = get_bearer_token()
     search_headers = {
         'Authorization': f'Bearer {access_token}'
     }
 
+    
+    # getting longitude latitude and radius values from the geocode
+    longitude = geocode['longitude']
+    latitude = geocode['latitude']
+    radius = geocode['radius']
+
     search_params = {
-        'query': f'#{hashtag}',
+        'query': f'#{hashtag} AND -is:retweet AND -is:reply AND point_radius:[{longitude} {latitude} {radius}]',
         'maxResults': maxResults,
         'fromDate': fromdate,
         'toDate': todate
     }
-    return requests.get(url=search_url, headers=search_headers, params=search_params)
+
+    return requests.get(url=premium_search_url, headers=search_headers, params=search_params)
+
+
+def standard_search_for_tweets(hashtag = None, result_type = None, count = None, geocode = None):
+
+    """
+    searches for tweets matching the given criteria using standard search API endpoint
+    :paramss: hastag, result_type, count, geocode
+    :return: tweet data
+    """
+    
+    #search url for standard search api
+    standard_search_url = f'{base_url}1.1/search/tweets.json'
+
+    # generating authorization header
+    access_token = get_bearer_token()
+    search_headers = {
+        'Authorization': f'Bearer {access_token}'
+    }
+
+    # query parameters
+
+    longitude = geocode['longitude']
+    latitude = geocode['latitude']
+    radius = geocode['radius']
+
+    search_params = {
+        'q': f'#{hashtag}',
+        'geocode': f'{latitude},{longitude},{radius}',
+        'result_type': result_type,
+        'count': count
+    }
+
+    return requests.get(standard_search_url, headers=search_headers, params=search_params)
