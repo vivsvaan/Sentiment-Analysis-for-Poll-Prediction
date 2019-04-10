@@ -7,7 +7,7 @@ import base64
 # these are the access keys associated with my twitter app
 # TODO - find a way to make them not appear in the source code
 
-# add keys accordingly
+# add appropriate keys
 consumer_key = 'CQGMKF5imQ7J6Cyl85Bh9mILN'
 consumer_secret_key = 'eslhOxns82F4uNSzTwbFIiTTqixX2Ekimmbk3E4DMYsv2s8MoH'
 base_url = 'https://api.twitter.com/'
