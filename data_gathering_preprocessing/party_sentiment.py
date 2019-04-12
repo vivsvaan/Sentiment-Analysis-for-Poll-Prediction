@@ -44,17 +44,20 @@ state_wise_sentiment = {
 }
 
 # read csv file here
-data_set = pd.read_csv('')
+data_set = pd.read_csv('2014_bjp.csv')
 
-
+print(data_set.head())
 for index, row in data_set.iterrows():
 
     #sentiment analyze the text of the row
-    tweet = TextBlob(row['tweet']).translate(to='en')
+    tweet = TextBlob(row['tweets'])
 
-    polarity, subjectivity = tweet.sentiment()
+    polarity, subjectivity = tweet.sentiment
 
     if polarity > 0.1:
-        state_wise_sentiment[row['state']]['positive'] = state_wise_sentiment[row['state']]['positive'] + 1
+        state_wise_sentiment[row['location']]['positive'] = state_wise_sentiment[row['location']]['positive'] + 1
     elif polarity < -0.1:
-        state_wise_sentiment[row['state']]['negative'] = state_wise_sentiment[row['state']]['negative'] + 1
+        state_wise_sentiment[row['location']]['negative'] = state_wise_sentiment[row['location']]['negative'] + 1
+
+for state, sentiment in state_wise_sentiment.items():
+    print(state, sentiment, sep='  ')
