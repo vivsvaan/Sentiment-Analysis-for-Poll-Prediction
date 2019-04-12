@@ -64,10 +64,13 @@ for index, row in data_set.iterrows():
 
     tweet = analyzer.polarity_scores(row['tweets'])
     
-    if tweet['compound'] > 0.1:
-        state_wise_sentiment[row['location']]['positive'] = state_wise_sentiment[row['location']]['positive'] + 1
-    elif tweet['compound'] < -0.1:
-        state_wise_sentiment[row['location']]['negative'] = state_wise_sentiment[row['location']]['negative'] + 1
+    if not tweet['neg'] > 0.1:
+        if tweet['pos'] - tweet['neg'] > 0:
+            state_wise_sentiment[row['location']]['positive'] = state_wise_sentiment[row['location']]['positive'] + 1
+    
+    elif not tweet['pos'] > 0.1:
+        if tweet['pos'] - tweet['neg'] <= 0:
+            state_wise_sentiment[row['location']]['negative'] = state_wise_sentiment[row['location']]['negative'] + 1
 
 for state, sentiment in state_wise_sentiment.items():
     print(state, sentiment, sep='  ')
