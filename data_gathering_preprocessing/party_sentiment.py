@@ -4,6 +4,7 @@
 import pandas as pd
 import numpy as np
 from textblob import TextBlob
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 state_wise_sentiment = {
     'Andhra Pradesh':               {'positive': 0, 'negative': 0},
@@ -44,19 +45,28 @@ state_wise_sentiment = {
 }
 
 # read csv file here
-data_set = pd.read_csv('2014_bjp.csv')
+data_set = pd.read_csv('dummy.csv')
 
-print(data_set.head())
+analyzer = SentimentIntensityAnalyzer()
+
 for index, row in data_set.iterrows():
 
     #sentiment analyze the text of the row
-    tweet = TextBlob(row['tweets'])
+     
+    # tweet = TextBlob(row['tweets'])
 
-    polarity, subjectivity = tweet.sentiment
+    # polarity, subjectivity = tweet.sentiment
 
-    if polarity > 0.1:
+    # if polarity > 0.1:
+    #     state_wise_sentiment[row['location']]['positive'] = state_wise_sentiment[row['location']]['positive'] + 1
+    # elif polarity < -0.1:
+    #     state_wise_sentiment[row['location']]['negative'] = state_wise_sentiment[row['location']]['negative'] + 1
+
+    tweet = analyzer.polarity_scores(row['tweets'])
+    
+    if tweet['compound'] > 0.1:
         state_wise_sentiment[row['location']]['positive'] = state_wise_sentiment[row['location']]['positive'] + 1
-    elif polarity < -0.1:
+    elif tweet['compound'] < -0.1:
         state_wise_sentiment[row['location']]['negative'] = state_wise_sentiment[row['location']]['negative'] + 1
 
 for state, sentiment in state_wise_sentiment.items():
