@@ -71,12 +71,12 @@ for index, row in data_set.iterrows():
     if not tweet['neg'] > 0.1:
         if tweet['pos'] - tweet['neg'] > 0:
             state_wise_sentiment[row['location']]['positive'] = state_wise_sentiment[row['location']]['positive'] + 1
-            list_of_analysis.append([row['location'], name_of_party, tweet['pos'] - tweet['neg']])
+            list_of_analysis.append([row['location'], name_of_party, row['followers'], tweet['pos'] - tweet['neg']])
     
     elif not tweet['pos'] > 0.1:
         if tweet['pos'] - tweet['neg'] <= 0:
             state_wise_sentiment[row['location']]['negative'] = state_wise_sentiment[row['location']]['negative'] + 1
-            list_of_analysis.append([row['location'], name_of_party, tweet['pos'] - tweet['neg']])
+            list_of_analysis.append([row['location'], name_of_party, row['followers'], tweet['pos'] - tweet['neg']])
 
 # for state, sentiment in state_wise_sentiment.items():
 #     print(state, sentiment, sep='  ')
