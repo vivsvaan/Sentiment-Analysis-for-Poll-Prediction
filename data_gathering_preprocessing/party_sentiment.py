@@ -47,6 +47,10 @@ state_wise_sentiment = {
 # read csv file here
 data_set = pd.read_csv('dummy.csv')
 
+# Insertname of Party Here
+name_of_party = ''
+
+list_of_analysis = []
 analyzer = SentimentIntensityAnalyzer()
 
 for index, row in data_set.iterrows():
@@ -67,10 +71,15 @@ for index, row in data_set.iterrows():
     if not tweet['neg'] > 0.1:
         if tweet['pos'] - tweet['neg'] > 0:
             state_wise_sentiment[row['location']]['positive'] = state_wise_sentiment[row['location']]['positive'] + 1
+            list_of_analysis.append([row['location'], name_of_party, tweet['pos'] - tweet['neg']])
     
     elif not tweet['pos'] > 0.1:
         if tweet['pos'] - tweet['neg'] <= 0:
             state_wise_sentiment[row['location']]['negative'] = state_wise_sentiment[row['location']]['negative'] + 1
+            list_of_analysis.append([row['location'], name_of_party, tweet['pos'] - tweet['neg']])
 
-for state, sentiment in state_wise_sentiment.items():
-    print(state, sentiment, sep='  ')
+# for state, sentiment in state_wise_sentiment.items():
+#     print(state, sentiment, sep='  ')
+
+for row in list_of_analysis:
+    print(row)
