@@ -112,7 +112,7 @@ cong_pred = []
 cong_act = []       
 N = 3
 ind = np.arange(N)
-width = 0.5
+width = 0.1
 fig = plt.figure()
 ax = fig.add_subplot(111)
 for i,j in zipped:
@@ -143,7 +143,7 @@ autolabel(rects4)
 
 plt.show()
 
-plt.scatter(range(35), dataset.iloc[:,5], color = 'red')
+#plt.scatter(range(35), dataset.iloc[:,5], color = 'red')
 #plt.plot(range(3), bjp_pred,bjp_act)
 #plt.plot(range(3), cong_pred,cong_act)
 plt.plot(range(3), bjp_pred,cong_pred)
