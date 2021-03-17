@@ -8,7 +8,7 @@ Based on data from Twitter, we predict the results of the 2019 Lok Sabha Electio
 * Trends of Previous Elections (voter turnout, region wise results)
 
 #### Dividing the features and information region wise-
-* Interactive Map of the naton, divided in states.
+* Interactive Map of the nation, divided in states.
 * For each state: information such as the the number of seates, candidates of the political parties in that region and past results,
   past trends such as voter turn-out (divided by caste, gender, age group etc.)
 
