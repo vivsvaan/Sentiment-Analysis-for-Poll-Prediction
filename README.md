@@ -36,3 +36,10 @@ Sentiment Analysis phase involves attributing the data with its associated polar
 Final data set created after sentiment analysis and data labeling is fed into a regressor. The regressor is trained on the data collected for General Elections of 2014 and then is used to predict the results of 2019 elections.
 
 Finally, the accuracy of the regression model is measured and results are compared.
+
+
+#### Implementation
+To implement the supervised Regression model design, the performance of the Multivariate Linear and other various
+regression models was compared.
+![Comparison](images/srt_comparision.jpg)
+
