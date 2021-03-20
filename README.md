@@ -28,3 +28,11 @@ Vader takes a sentence as input and provides a percent value for three categorie
 The Dataset for 2014 Elections was used to create training dataset. From the State Wise Result of 2014 Elections,
 date related to Total valid votes polled in states and Total valid votes polled by parties was collected and was integrated with the twitter dataset.
 
+#### Design
+The proposed model can be divided into 3 main stages on the basis of the nature of the task to be performed.
+![Design](images/design.jpg)
+
+Sentiment Analysis phase involves attributing the data with its associated polarity value. 
+Final data set created after sentiment analysis and data labeling is fed into a regressor. The regressor is trained on the data collected for General Elections of 2014 and then is used to predict the results of 2019 elections.
+
+Finally, the accuracy of the regression model is measured and results are compared.
